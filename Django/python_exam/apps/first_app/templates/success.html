@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    .head {
+        width: 100%;
+    }
+    div {
+        display:inline-block;
+    }
+
+    .message {
+        border: 1px solid black;
+        padding: 3%;
+        width: 80%;
+    }
+
+    td {
+        border: 1px solid black;
+    }
+    </style>
+
+</head>
+<body>
+    <div class='head'>
+        <h1>Pokes!</h1>
+        <p>Welcome, {{request.session.name}}!</p>
+        
+        
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Alias</th>
+                <th>Email</th>
+                <th>Poke Count</th>
+                <th>Poke!</th>
+                
+            </tr>
+        {% for thing in users %}
+            <tr>
+                <td>{{thing.name}}</td>
+                <td>{{thing.alias}}</td>
+                <td>{{thing.email}}</td>
+                <td>{{request.session.count}}</td>
+                <td><a href="/poke/{{thing.id}}" method='post'>Poke!</a></td>
+            </tr>
+        {% endfor %} 
+        </table>
+        
+        <a href='/'>Log off</a>
+    </div>
+    
+
+</body>
+</html>

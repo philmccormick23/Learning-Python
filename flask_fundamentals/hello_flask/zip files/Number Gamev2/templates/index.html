@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="../static/index.css">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+        <style>
+            #return{
+                position: relative;
+                left: 47%;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="wrapper">
+            <h3>
+            Welcome to the great number game!
+            </h3>
+            <p>I am thinking of a number between 1 and 100.</p>
+            <p>Take a guess!</p>
+            <form action="/compare", method="post">
+                <input type="number" name="guess" value="">
+                <input type="submit" value="Submit">
+            </form>
+        {% if request.form['guess'] < number and request.form['guess'] > 0 %}
+        <p>Too small</p>
+        {% endif %}
+        {% if request.form['guess'] > number %}
+        <p>Too big</p>
+        {% endif %}
+        {% if request.form['guess'] == number %}
+        <p>Just right!</p>
+        <a id = "return" href="/">Play again!</a>
+        {% endif %}
+        </div>
+    </body>
+</html>

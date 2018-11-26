@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    .head {
+        width: 100%;
+    }
+    div {
+        display:inline-block;
+    }
+
+    .message {
+        border: 1px solid black;
+        padding: 3%;
+        width: 80%;
+    }
+    </style>
+
+</head>
+<body>
+    <div class='head'>
+        <a href='/'>Log Out</a>
+        <h1>CodingDojo Wall</h1>
+        <p>Welcome, {{request.session.first_name}}!</p>
+        <h2>Customers</h2>
+        <table>
+                <tr>
+                    <td>First Name</td>
+                    <td>Last Name</td>
+                    <td>Email</td>
+                </tr>
+                {% for thing in users %}
+                <tr>
+                    <td>{{thing.first_name}}</td>
+                    <td>{{thing.last_name}}</td> 
+                    <td>{{thing.email}}</td>  
+                </tr>
+                {% endfor %}
+                <br>  
+        </table> 
+        <table>
+                <tr>
+                    <td>Package Name</td>
+                    <td>Cost</td>
+                    <td>User</td>
+                </tr>
+                {% for thing in packages %}
+                <tr>
+                    <td>{{thing.name}}</td>
+                    <td>{{thing.cost}}</td> 
+                    <td>{{thing.user.first_name}}</td>  
+                    <td><a href='/edit/{{thing.id}}'>Edit</a></td> 
+                    <td><a href='/delete/{{thing.id}}'>Delete</a></td> 
+                </tr>
+                {% endfor %}
+                <br>  
+        </table> 
+
+        <a href="/packages/new">Create new package</a>
+    </div>
+    
+
+</body>
+</html>

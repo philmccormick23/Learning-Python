@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>Flask Form</h2>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <p>{{message}}</p>
+            {% endfor %}
+        {% endif %}
+        {% endwith %}
+
+    <form action='/users' method='post'>
+        Your Name: <input type='text' name='name'><br>
+
+        Email: <input type='text' name='email'>
+        <br>
+        <select name="Location">
+            <option value="Chicago">Chicago</option>
+            <option value="Los Angeles">Los Angeles</option>
+            <option value="DC">DC</option>
+            <option value="Seattle">Seattle</option>
+        </select>
+        <br>
+
+
+        <select name="Language">
+            <option value="Javascript">JavaScript</option>
+            <option value="Python">Python</option>
+            <option value="C#">C#</option>
+        </select>
+        <br>
+        
+        <input type='submit' value='create user'>
+    </form>
+</body>
+
+</html>

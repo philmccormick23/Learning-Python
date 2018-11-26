@@ -1,0 +1,28 @@
+*{
+    padding: 0px 100px;
+}
+.organizer{
+    height:600px;
+    width: 500px;
+    background: yellow;
+    margin-bottom: 900px;
+}
+h1, p {
+    text-align: center;
+}
+.entry {
+    width: 10px;
+}
+.engine {
+    width: 10px;
+}
+.box {
+    width: 80px;
+    height: 250px;
+    background: green;
+    color: white;
+    font-size: 50px;
+    margin-left: 110px;
+    border: 2px solid black;
+    margin-bottom: 15px;
+}

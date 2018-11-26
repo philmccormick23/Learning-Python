@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    .head {
+        width: 100%;
+    }
+    div {
+        display:inline-block;
+    }
+
+    .message {
+        border: 1px solid black;
+        padding: 3%;
+        width: 80%;
+    }
+    </style>
+
+</head>
+<body>
+    <div class='head'>
+        <h1>CodingDojo Wall</h1>
+        <p>Welcome, {{request.session.name}}!</p>
+        <a href='/'>Log off</a>
+    </div>
+    <div class='content'>
+        <form action="/message" method="post">
+            {% csrf_token %}
+           Post a Message: <input type='text' name='message'>
+           <input type='submit' name='Post A Message'>
+        </form>
+
+        {% for thing in messages %}
+            <div class='message'>
+                <h5>{{thing.user.first_name}} {{thing.created_at}}</h5>
+                <p>{{thing.message}}</p>
+                <form action="/comments" method="post">
+                    {% csrf_token %}
+                   Post a Comment: <input type='text' name='comment'>
+                   <input type='submit' name='Post A Message'>
+                </form>
+            </div>
+        {% endfor %}
+    </div>
+
+</body>
+</html>

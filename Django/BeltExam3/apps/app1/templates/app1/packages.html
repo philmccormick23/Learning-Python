@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+    <title>Subscriptions</title>
+</head>
+<body>
+    <h1>Welcome, {{ request.session.first_name }} </h1>
+        <h2>Dashboard!</h2>
+    <a href="/">Log Off</a>
+        <h2>Customers</h2>
+    <table>
+        <tr>
+            <td>Name</td>
+            <td>Next Due Date</td>
+            <td>Amount Due</td>
+            <td>Package Type</td>
+        </tr>
+        {% for user in users %}
+        <tr>
+            <td><a href="/user/{{ user.id }}">{{user.first_name}}</a></td> 
+            <td>{{user.due_date}}</td>
+            <td>{{user.amount_due}}</td>
+            <td>{{user.package_type}}</td>
+        </tr>
+        {% endfor %}
+        <br>  
+</table> 
+<br>
+<h3>Packages</h3>
+<table>
+    <tr>
+        <td>Package Name</td>
+        <td>Package Cost</td>
+        <td>Available</td>
+        <td>Actions</td>
+    </tr>
+    {% for package in packages %}
+    <tr>
+        <td>{{package.package_name}}</td> 
+        <td>{{package.package_cost}}</td>
+        <td>{{package.availability}}</td>
+        <td><a href="/packages/{{ package.id }}/edit" >Edit</a></td>
+        <td><a href="/packages/{{ package.id }}/delete" >Delete</a></td>
+    </tr>
+    {% endfor %}
+    <br>  
+</table> 
+    <br>
+        <a href="/packages/new">Create new package</a>
+        <br>
+</form>
+</body>

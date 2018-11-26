@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <a href='/books'>Home</a>
+    <a href='/Logout'>Logout</a>
+    <h1>{{books.title}}</h1>
+    Author: <p>{{books.author}}</p>
+    Reviews:<p>{{books.user.name}} says, "{{books.review}}"</p>
+    
+    <form action='/books/addReview' method="post">
+        {% csrf_token %}
+        <input type='hidden' name='id' value={{books.id}}>
+        
+        Add a Review: <input type='text' name='review'>
+        Rating: <select name="rating">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select> stars
+          <input type='submit' name='Add Book and Review'>
+
+            {% for thing in reviews%}
+            <p>{{thing.review}}</p>
+            <p>{{thing.rating}}</p>
+            {% endfor %}
+</body>
+</html>
